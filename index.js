@@ -12,7 +12,6 @@ class instance extends instance_skel {
 	constructor(system, id, config) {
 		super(system, id, config)
 
-		this.path;
 		this.statusInterval;
 		this.encodingState;
 		this.webcastStatus;
@@ -140,6 +139,7 @@ class instance extends instance_skel {
 				self.setVariable('webcast_type', response.data.webcast_type);
 				self.setVariable('encoding_status', response.data.encoding_status);
 				self.setVariable('caption', response.data.caption_text);
+				self.setVariable('duration', self.msToTime(response.data.timer_value));
 
 				self.checkFeedbacks('encoding_status');
 
@@ -153,6 +153,19 @@ class instance extends instance_skel {
 
 	}
 
+	msToTime(duration) {
+		var milliseconds = Math.floor((duration % 1000) / 100),
+		  seconds = Math.floor((duration / 1000) % 60),
+		  minutes = Math.floor((duration / (1000 * 60)) % 60),
+		  hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+	  
+		hours = (hours < 10) ? "0" + hours : hours;
+		minutes = (minutes < 10) ? "0" + minutes : minutes;
+		seconds = (seconds < 10) ? "0" + seconds : seconds;
+	  
+		return hours + ":" + minutes + ":" + seconds;
+	  }
+	  
 	updateConfig(config) {
 
 		this.config = config
@@ -173,6 +186,7 @@ class instance extends instance_skel {
 			{ name: 'encoding_status', label: 'Encoding Status' },
 			{ name: 'caption', label: 'Caption Text' },
 			{ name: 'webcast_type', label: 'Webcast Type' },
+			{ name: 'duration', label: 'Encoding Duration' },
 
 
 		]
