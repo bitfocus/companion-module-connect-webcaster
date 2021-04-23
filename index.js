@@ -260,8 +260,8 @@ class instance extends instance_skel {
 
         this.config = config
 
-        axios.defaults.baseURL = 'http://' + this.config.host;
-        axios.defaults.port = this.config.port;
+        axios.defaults.baseURL = 'http://' + this.config.host + ':' + this.config.port;
+
         this.actions()
 
     }
