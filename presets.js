@@ -55,7 +55,7 @@ exports.getPresets = function () {
 			label: 'Toggle Mode',
 			bank: {
 				style: 'text',
-				text: `$(${this.config.label}:webcast_type)`,
+				text: `$(${this.config.label}:webcast_type) Webcast`,
 				size: '14',
 				color: this.rgb(255, 255, 255),
 				bgcolor: this.rgb(0, 0, 0),
@@ -119,22 +119,6 @@ exports.getPresets = function () {
 		},
 		{
 			category: 'webcast-control',
-			label: 'Next Agenda',
-			bank: {
-				style: 'text',
-				text: 'Next Agenda',
-				size: '14',
-				color: this.rgb(255, 255, 255),
-				bgcolor: this.rgb(0, 0, 0),
-
-			},
-			actions: [{
-				action: 'next_agenda',
-			}],
-
-		},
-		{
-			category: 'webcast-control',
 			label: 'Previous Agenda',
 			bank: {
 				style: 'text',
@@ -146,6 +130,22 @@ exports.getPresets = function () {
 			},
 			actions: [{
 				action: 'previous_agenda',
+			}],
+
+		},
+		{
+			category: 'webcast-control',
+			label: 'Next Agenda',
+			bank: {
+				style: 'text',
+				text: 'Next Agenda',
+				size: '14',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'next_agenda',
 			}],
 
 		},
