@@ -63,7 +63,7 @@ exports.getFeedbacks = function () {
 		},
 		{
 			type: 'dropdown',
-			label: 'Action',
+			label: 'View',
 			id: 'hybrid_id',
 			default: '0',
 			choices: [
@@ -76,6 +76,43 @@ exports.getFeedbacks = function () {
 		],
 		callback: (feedback, bank) => {
 			if (this.webcastStatus.hybrid_id == feedback.options.hybrid_id) {
+				return {
+					color: feedback.options.fg,
+					bgcolor: feedback.options.bg
+				};
+
+			}
+		}
+	}
+
+	feedbacks['automation_status'] = {
+		label: 'Set Colour for Mic Automation',
+		description: 'Set Colour for Mic Automation Status',
+		options: [{
+			type: 'colorpicker',
+			label: 'Foreground color when active',
+			id: 'fg',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color when active',
+			id: 'bg',
+			default: this.rgb(248, 185, 51),
+		},
+		{
+			type: 'dropdown',
+			label: 'Automation',
+			id: 'state',
+			default: '0',
+			choices: [
+				{ id: '0', label: 'OFF' },
+				{ id: '1', label: 'ON' },
+			]
+		}
+		],
+		callback: (feedback, bank) => {
+			if (this.webcastStatus.automation_on == feedback.options.state) {
 				return {
 					color: feedback.options.fg,
 					bgcolor: feedback.options.bg

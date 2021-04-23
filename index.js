@@ -34,27 +34,27 @@ class instance extends instance_skel {
     config_fields() {
 
         return [{
-                type: 'text',
-                id: 'info',
-                width: 12,
-                label: 'Information',
-                value: 'This module controls the Public-i Connect Webcaster software.'
-            },
-            {
-                type: 'textinput',
-                id: 'host',
-                label: 'Encoder IP',
-                width: 6,
-                regex: this.REGEX_IP
-            },
-            {
-                type: 'textinput',
-                id: 'port',
-                label: 'Remote Port',
-                width: 6,
-                default: 80,
-                regex: this.REGEX_PORT
-            }
+            type: 'text',
+            id: 'info',
+            width: 12,
+            label: 'Information',
+            value: 'This module controls the Public-i Connect Webcaster software.'
+        },
+        {
+            type: 'textinput',
+            id: 'host',
+            label: 'Encoder IP',
+            width: 6,
+            regex: this.REGEX_IP
+        },
+        {
+            type: 'textinput',
+            id: 'port',
+            label: 'Remote Control Port',
+            width: 6,
+            default: 80,
+            regex: this.REGEX_PORT
+        }
         ]
     }
 
@@ -161,15 +161,34 @@ class instance extends instance_skel {
                     }]
                 }
                 break;
+            case 'set_automation_status':
+                if (opt.state == 1) {
+                    cmd = {
+                        "method": "setAutomationStatus",
+                        "params": [{
+                            "automation_on": true
+                        }]
+                    }
+                } else {
+                    cmd = {
+                        "method": "setAutomationStatus",
+                        "params": [{
+                            "automation_on": false
+                        }]
+                    }
+                }
+                break;
         }
 
         if (cmd !== undefined) {
             axios.post('/json_api', cmd)
-                .then(function(response) {
+                .then(function (response) {
                     //console.log(response.data);
+                    status(self.STATE_OK);
                 })
-                .catch(function(error) {
+                .catch(function (error) {
                     //console.log(error);
+                    status(self.STATUS_ERROR, error);
                 });
         }
     }
@@ -191,7 +210,7 @@ class instance extends instance_skel {
 
         axios.defaults.baseURL = 'http://' + this.config.host + ':' + this.config.port;
 
-        self.statusInterval = setInterval(function() {
+        self.statusInterval = setInterval(function () {
             self.getStatus();
         }, 500);
 
@@ -201,9 +220,9 @@ class instance extends instance_skel {
     getStatus() {
         var self = this;
         axios.post('/json_api', {
-                method: 'getStatus'
-            })
-            .then(function(response) {
+            method: 'getStatus'
+        })
+            .then(function (response) {
                 self.webcastStatus = response.data;
 
                 if (self.webcastStatus.encoding_status != '') {
@@ -220,6 +239,7 @@ class instance extends instance_skel {
 
                 self.checkFeedbacks('encoding_status');
                 self.checkFeedbacks('hybrid_index');
+                self.checkFeedbacks('automation_status');
 
                 //Get current agenda item text
                 if (self.webcastStatus.agenda_id == 0) {
@@ -236,9 +256,9 @@ class instance extends instance_skel {
                 self.status(self.STATE_OK);
 
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 //console.log(error);
-                self.status(self.STATUS_ERROR);
+                self.status(self.STATUS_ERROR, error);
             });
 
     }
@@ -277,25 +297,25 @@ class instance extends instance_skel {
     init_variables() {
 
         var variables = [{
-                name: 'encoding_status',
-                label: 'Encoding Status'
-            },
-            {
-                name: 'caption',
-                label: 'Caption Text'
-            },
-            {
-                name: 'webcast_type',
-                label: 'Webcast Type'
-            },
-            {
-                name: 'duration',
-                label: 'Encoding Duration'
-            },
-            {
-                name: 'agenda_item',
-                label: 'Current Agenda Item text'
-            },
+            name: 'encoding_status',
+            label: 'Encoding Status'
+        },
+        {
+            name: 'caption',
+            label: 'Caption Text'
+        },
+        {
+            name: 'webcast_type',
+            label: 'Webcast Type'
+        },
+        {
+            name: 'duration',
+            label: 'Encoding Duration'
+        },
+        {
+            name: 'agenda_item',
+            label: 'Current Agenda Item text'
+        },
         ]
 
         this.setVariableDefinitions(variables)

@@ -15,11 +15,11 @@ module.exports = {
 
 		}
 		actions['next_agenda'] = {
-			label: 'Next agenda item',
+			label: 'Next Agenda Item',
 
 		}
 		actions['previous_agenda'] = {
-			label: 'Previous agenda item',
+			label: 'Previous Agenda Item',
 
 		}
 		actions['toggle_mode'] = {
@@ -31,7 +31,7 @@ module.exports = {
 			options: [
 				{
 					type: 'dropdown',
-					label: 'Action',
+					label: 'View',
 					id: 'hybrid_id',
 					default: '0',
 					choices: [
@@ -39,6 +39,21 @@ module.exports = {
 						{ id: '1', label: 'Remote' },
 						{ id: '2', label: 'Mix 1' },
 						{ id: '3', label: 'Mix 2' },
+					]
+				}
+			]
+		}
+		actions['set_automation_status'] = {
+			label: 'Set Mic Automation',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Automation',
+					id: 'state',
+					default: '0',
+					choices: [
+						{ id: '0', label: 'OFF' },
+						{ id: '1', label: 'ON' },
 					]
 				}
 			]
