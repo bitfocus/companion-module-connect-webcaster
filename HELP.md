@@ -1,13 +1,23 @@
-## companion-module-template-es6
+## companion-module-connect-webcaster
+
+This module controls the Public-i Connect Webcaster software using the Remote Control tablet interface.
 
 ### Configuration
-* Instructions here about information needed to connect to the device/software.
+* Enter the Encoder IP and Remote Control Port as defined in the settings.
 
 ### Available Actions
-* List
+* Start/Stop Webcast
+* Toggle between Live/Test mode
+* Select Previous/Next Agenda Item
+* Select Hybrid View
 
 ### Available Feedbacks
-* List
+* Encoding Status
+* Current Hybrid View
 
 ### Available Variables
-* List
+* Current Encoding Status
+* Current Caption
+* Current Webcast Type
+* Webcast Total Duration
+* Current Agenda Item Text
