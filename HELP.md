@@ -20,6 +20,7 @@ This module controls the Public-i Connect Webcaster software using the Remote Co
 * Microphone Automation State
 * Currently Selected Seat
 * JIT Slides State
+* Webcast Mode (Live/Test)
 
 ### Available Variables
 * Current Encoding Status

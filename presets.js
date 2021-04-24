@@ -71,6 +71,9 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'toggle_mode',
 			}],
+			feedbacks: [{
+				type: 'webcast_mode',
+			}],
 
 		},
 		{
@@ -406,13 +409,13 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'set_selected_seat',
 				options: {
-					state: '1'
+					seat: '1'
 				}
 			}],
 			feedbacks: [{
 				type: 'selected_seat',
 				options: {
-					state: '1'
+					seat: '1'
 				}
 			}],
 		},
@@ -430,13 +433,13 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'set_selected_seat',
 				options: {
-					state: '2'
+					seat: '2'
 				}
 			}],
 			feedbacks: [{
 				type: 'selected_seat',
 				options: {
-					state: '2'
+					seat: '2'
 				}
 			}],
 		},
@@ -454,13 +457,13 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'set_selected_seat',
 				options: {
-					state: '3'
+					seat: '3'
 				}
 			}],
 			feedbacks: [{
 				type: 'selected_seat',
 				options: {
-					state: '3'
+					seat: '3'
 				}
 			}],
 		},
@@ -478,13 +481,13 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'set_selected_seat',
 				options: {
-					state: '4'
+					seat: '4'
 				}
 			}],
 			feedbacks: [{
 				type: 'selected_seat',
 				options: {
-					state: '4'
+					seat: '4'
 				}
 			}],
 		},

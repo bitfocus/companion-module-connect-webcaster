@@ -46,6 +46,49 @@ exports.getFeedbacks = function () {
 		}
 	}
 
+	feedbacks['webcast_mode'] = {
+		label: 'Set Colour for Webcast Mode',
+		description: 'Set Colour for Webcast Mode',
+		options: [{
+			type: 'colorpicker',
+			label: 'Foreground color for Test Mode',
+			id: 'fg_test',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color for Test Mode',
+			id: 'bg_test',
+			default: this.rgb(0, 38, 103),
+		}
+		,{
+			type: 'colorpicker',
+			label: 'Foreground color for Live Mode',
+			id: 'fg_live',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color for Live Mode',
+			id: 'bg_live',
+			default: this.rgb(0, 75, 0),
+		}
+		],
+		callback: (feedback, bank) => {
+			if (this.webcastStatus.test_mode) {
+				return {
+					color: feedback.options.fg_test,
+					bgcolor: feedback.options.bg_test
+				};
+			}else{
+				return {
+					color: feedback.options.fg_live,
+					bgcolor: feedback.options.bg_live
+				};
+			}
+		}
+	}
+
 	feedbacks['hybrid_index'] = {
 		label: 'Set Colour for Hybrid View',
 		description: 'Set Colour for current Hybrid View',
@@ -59,7 +102,7 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(248, 185, 51),
+			default: this.rgb(255, 125, 0),
 		},
 		{
 			type: 'dropdown',
@@ -98,7 +141,7 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(248, 185, 51),
+			default: this.rgb(255, 125, 0),
 		},
 		{
 			type: 'dropdown',
@@ -135,7 +178,7 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(248, 185, 51),
+			default: this.rgb(255, 125, 0),
 		},
 		{
 			type: 'number',
@@ -170,7 +213,7 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(248, 185, 51),
+			default: this.rgb(255, 125, 0),
 		},
 		{
 			type: 'dropdown',

@@ -287,6 +287,7 @@ class instance extends instance_skel {
                 self.checkFeedbacks('automation_status');
                 self.checkFeedbacks('selected_seat');
                 self.checkFeedbacks('jit_slides');
+                self.checkFeedbacks('webcast_mode');
 
                 //Get current agenda item text
                 if (self.webcastStatus.agenda_id == 0) {
