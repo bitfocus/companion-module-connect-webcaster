@@ -23,7 +23,15 @@ module.exports = {
 
 		}
 		actions['toggle_mode'] = {
-			label: 'Toggle Live/Test',
+			label: 'Toggle Live/Test Mode',
+
+		}
+		actions['set_live_mode'] = {
+			label: 'Set Live Mode',
+
+		}
+		actions['set_test_mode'] = {
+			label: 'Set Test Mode',
 
 		}
 		actions['set_hybrid_index'] = {
@@ -48,7 +56,7 @@ module.exports = {
 			options: [
 				{
 					type: 'dropdown',
-					label: 'Action',
+					label: 'JIT Slides',
 					id: 'state',
 					default: '0',
 					choices: [

@@ -174,7 +174,7 @@ exports.getFeedbacks = function () {
 		},
 		{
 			type: 'dropdown',
-			label: 'Automation',
+			label: 'JIT Slides',
 			id: 'state',
 			default: '0',
 			choices: [

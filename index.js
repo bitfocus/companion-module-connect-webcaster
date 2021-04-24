@@ -93,7 +93,7 @@ class instance extends instance_skel {
                             "method": "setWebcast",
                             "params": [{
                                 "webcast_id": this.webcastStatus.webcast_id,
-                                "test_mode": "false"
+                                "test_mode": false
                             }]
                         };
                     } else {
@@ -101,10 +101,32 @@ class instance extends instance_skel {
                             "method": "setWebcast",
                             "params": [{
                                 "webcast_id": this.webcastStatus.webcast_id,
-                                "test_mode": "true"
+                                "test_mode": true
                             }]
                         };
                     }
+                }
+                break
+            case 'set_live_mode':
+                if (!this.encodingState) {
+                    cmd = {
+                        "method": "setWebcast",
+                        "params": [{
+                            "webcast_id": this.webcastStatus.webcast_id,
+                            "test_mode": false
+                        }]
+                    };
+                }
+                break
+            case 'set_test_mode':
+                if (!this.encodingState) {
+                    cmd = {
+                        "method": "setWebcast",
+                        "params": [{
+                            "webcast_id": this.webcastStatus.webcast_id,
+                            "test_mode": true
+                        }]
+                    };
                 }
                 break
             case 'next_agenda':

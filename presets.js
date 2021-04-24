@@ -74,6 +74,38 @@ exports.getPresets = function () {
 
 		},
 		{
+			category: 'webcast-control',
+			label: 'Set Live Mode',
+			bank: {
+				style: 'text',
+				text: `Live Mode`,
+				size: '14',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'set_live_mode',
+			}],
+
+		},
+		{
+			category: 'webcast-control',
+			label: 'Set Test Mode',
+			bank: {
+				style: 'text',
+				text: `Test Mode`,
+				size: '14',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'set_test_mode',
+			}],
+
+		},
+		{
 			category: 'webcast-info',
 			label: 'Duration',
 			bank: {
