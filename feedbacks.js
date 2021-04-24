@@ -86,8 +86,8 @@ exports.getFeedbacks = function () {
 	}
 
 	feedbacks['automation_status'] = {
-		label: 'Set Colour for Mic Automation',
-		description: 'Set Colour for Mic Automation Status',
+		label: 'Set Colour for Mic Automation ON/OFF',
+		description: 'Set Colour for Mic Automation Status ON/OFF',
 		options: [{
 			type: 'colorpicker',
 			label: 'Foreground color when active',
@@ -113,6 +113,78 @@ exports.getFeedbacks = function () {
 		],
 		callback: (feedback, bank) => {
 			if (this.webcastStatus.automation_on == feedback.options.state) {
+				return {
+					color: feedback.options.fg,
+					bgcolor: feedback.options.bg
+				};
+
+			}
+		}
+	}
+
+	feedbacks['selected_seat'] = {
+		label: 'Set Colour for Selected Seat',
+		description: 'Set Colour for the currently selected seat',
+		options: [{
+			type: 'colorpicker',
+			label: 'Foreground color when active',
+			id: 'fg',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color when active',
+			id: 'bg',
+			default: this.rgb(248, 185, 51),
+		},
+		{
+			type: 'number',
+			label: 'Seat ID',
+			id: 'seat',
+			default: '1',
+			min: '0',
+			max: '99999'
+		}
+		],
+		callback: (feedback, bank) => {
+			if (this.webcastStatus.selected_seat_id == feedback.options.seat) {
+				return {
+					color: feedback.options.fg,
+					bgcolor: feedback.options.bg
+				};
+
+			}
+		}
+	}
+
+	feedbacks['jit_slides'] = {
+		label: 'Set Colour for JIT Slides ON/OFF',
+		description: 'Set Colour for JIT Slides ON/OFF',
+		options: [{
+			type: 'colorpicker',
+			label: 'Foreground color when active',
+			id: 'fg',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color when active',
+			id: 'bg',
+			default: this.rgb(248, 185, 51),
+		},
+		{
+			type: 'dropdown',
+			label: 'Automation',
+			id: 'state',
+			default: '0',
+			choices: [
+				{ id: '0', label: 'OFF' },
+				{ id: '1', label: 'ON' },
+			]
+		}
+		],
+		callback: (feedback, bank) => {
+			if (this.webcastStatus.is_jitslide_on == feedback.options.state) {
 				return {
 					color: feedback.options.fg,
 					bgcolor: feedback.options.bg

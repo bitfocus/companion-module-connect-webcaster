@@ -178,9 +178,32 @@ class instance extends instance_skel {
                     }
                 }
                 break;
+            case 'set_selected_seat':
+                cmd = {
+                    "method": "setSelectedSeat",
+                    "params": [{
+                        "layout_id": opt.seat
+                    }]
+                }
+                break;
+
+            case 'set_jit_slide':
+                if (opt.state == 1) {
+                    cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=true";
+                } else {
+                    cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=false";
+                }
+                axios.get(cmd)
+                    .then(function (response) {
+                        status(self.STATE_OK);
+                    })
+                    .catch(function (error) {
+                        status(self.STATUS_ERROR, error);
+                    });
+                break;
         }
 
-        if (cmd !== undefined) {
+        if (cmd !== undefined && id != "set_jit_slide") {
             axios.post('/json_api', cmd)
                 .then(function (response) {
                     //console.log(response.data);
@@ -240,6 +263,8 @@ class instance extends instance_skel {
                 self.checkFeedbacks('encoding_status');
                 self.checkFeedbacks('hybrid_index');
                 self.checkFeedbacks('automation_status');
+                self.checkFeedbacks('selected_seat');
+                self.checkFeedbacks('jit_slides');
 
                 //Get current agenda item text
                 if (self.webcastStatus.agenda_id == 0) {

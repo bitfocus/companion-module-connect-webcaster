@@ -11,11 +11,15 @@ This module controls the Public-i Connect Webcaster software using the Remote Co
 * Select Previous/Next Agenda Item
 * Select Hybrid View
 * Set Microphone Automation On/Off
+* Set Selected Seat
+* Set JIT Slides On/Off
 
 ### Available Feedbacks
 * Encoding Status
 * Current Hybrid View
 * Microphone Automation State
+* Currently Selected Seat
+* JIT Slides State
 
 ### Available Variables
 * Current Encoding Status

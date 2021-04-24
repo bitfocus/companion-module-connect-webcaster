@@ -43,8 +43,23 @@ module.exports = {
 				}
 			]
 		}
+		actions['set_jit_slide'] = {
+			label: 'Set JIT Slides ON/OFF',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Action',
+					id: 'state',
+					default: '0',
+					choices: [
+						{ id: '0', label: 'OFF' },
+						{ id: '1', label: 'ON' },
+					]
+				}
+			]
+		}
 		actions['set_automation_status'] = {
-			label: 'Set Mic Automation',
+			label: 'Set Mic Automation ON/OFF',
 			options: [
 				{
 					type: 'dropdown',
@@ -55,6 +70,19 @@ module.exports = {
 						{ id: '0', label: 'OFF' },
 						{ id: '1', label: 'ON' },
 					]
+				}
+			]
+		}
+		actions['set_selected_seat'] = {
+			label: 'Set Selected Seat',
+			options: [
+				{
+					type: 'number',
+					label: 'Seat ID',
+					id: 'seat',
+					default: '1',
+					min: '0',
+					max: '99999'
 				}
 			]
 		}
