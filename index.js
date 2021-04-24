@@ -200,6 +200,23 @@ class instance extends instance_skel {
                     }
                 }
                 break;
+            case 'toggle_automation':
+                if (this.webcastStatus.automation_on) {
+                    cmd = {
+                        "method": "setAutomationStatus",
+                        "params": [{
+                            "automation_on": false
+                        }]
+                    }
+                } else {
+                    cmd = {
+                        "method": "setAutomationStatus",
+                        "params": [{
+                            "automation_on": true
+                        }]
+                    }
+                }
+                break;
             case 'set_selected_seat':
                 cmd = {
                     "method": "setSelectedSeat",
@@ -223,9 +240,23 @@ class instance extends instance_skel {
                         status(self.STATUS_ERROR, error);
                     });
                 break;
+                case 'toggle_jit_slide':
+                    if (this.webcastStatus.is_jitslide_on) {
+                        cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=false";
+                    } else {
+                        cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=true";
+                    }
+                    axios.get(cmd)
+                        .then(function (response) {
+                            status(self.STATE_OK);
+                        })
+                        .catch(function (error) {
+                            status(self.STATUS_ERROR, error);
+                        });
+                    break;
         }
 
-        if (cmd !== undefined && id != "set_jit_slide") {
+        if (cmd !== undefined && id != "set_jit_slide"  && id != "toggle_jit_slide") {
             axios.post('/json_api', cmd)
                 .then(function (response) {
                     //console.log(response.data);

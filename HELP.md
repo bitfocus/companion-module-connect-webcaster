@@ -10,9 +10,9 @@ This module controls the Public-i Connect Webcaster software using the Remote Co
 * Toggle between Live/Test mode
 * Select Previous/Next Agenda Item
 * Select Hybrid View
-* Set Microphone Automation On/Off
+* Set Microphone Automation On/Off and Toggle
 * Set Selected Seat
-* Set JIT Slides On/Off
+* Set JIT Slides On/Off and Toggle
 
 ### Available Feedbacks
 * Encoding Status

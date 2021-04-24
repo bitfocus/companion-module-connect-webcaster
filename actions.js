@@ -66,6 +66,10 @@ module.exports = {
 				}
 			]
 		}
+		actions['toggle_jit_slide'] = {
+			label: 'Toggle JIT Slides',
+
+		}
 		actions['set_automation_status'] = {
 			label: 'Set Mic Automation ON/OFF',
 			options: [
@@ -80,6 +84,10 @@ module.exports = {
 					]
 				}
 			]
+		}
+		actions['toggle_automation'] = {
+			label: 'Toggle Mic Automation',
+
 		}
 		actions['set_selected_seat'] = {
 			label: 'Set Selected Seat',

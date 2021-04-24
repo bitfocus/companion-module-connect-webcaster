@@ -348,6 +348,27 @@ exports.getPresets = function () {
 			}],
 		},
 		{
+			category: 'mic-automation',
+			label: 'Mic Automation Toggle',
+			bank: {
+				style: 'text',
+				text: ' Auto Toggle',
+				size: '18',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'toggle_automation',
+			}],
+			feedbacks: [{
+				type: 'automation_status',
+				options: {
+					state: '1'
+				}
+			}],
+		},
+		{
 			category: 'jit-slides',
 			label: 'JIT Slides On',
 			bank: {
@@ -392,6 +413,27 @@ exports.getPresets = function () {
 				type: 'jit_slides',
 				options: {
 					state: '0'
+				}
+			}],
+		},
+		{
+			category: 'jit-slides',
+			label: 'JIT Slides Toggle',
+			bank: {
+				style: 'text',
+				text: ' JIT Toggle',
+				size: '18',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'toggle_jit_slide',
+			}],
+			feedbacks: [{
+				type: 'jit_slides',
+				options: {
+					state: '1'
 				}
 			}],
 		},
