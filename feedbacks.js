@@ -1,7 +1,7 @@
 exports.getFeedbacks = function () {
 
 	let feedbacks = {};
-	
+
 
 	feedbacks['encoding_status'] = {
 		label: 'Set Colour for Encoding Status',
@@ -18,7 +18,7 @@ exports.getFeedbacks = function () {
 			id: 'bg_false',
 			default: this.rgb(115, 0, 0),
 		}
-		,{
+			, {
 			type: 'colorpicker',
 			label: 'Foreground color for Encoding',
 			id: 'fg_true',
@@ -30,6 +30,18 @@ exports.getFeedbacks = function () {
 			id: 'bg_true',
 			default: this.rgb(0, 75, 0),
 		}
+			, {
+			type: 'colorpicker',
+			label: 'Foreground color for Paused',
+			id: 'fg_paused',
+			default: '16777215'
+		},
+		{
+			type: 'colorpicker',
+			label: 'Background color for Paused',
+			id: 'bg_paused',
+			default: this.rgb(255, 125, 0),
+		}
 		],
 		callback: (feedback, bank) => {
 			if (this.encodingState) {
@@ -37,11 +49,18 @@ exports.getFeedbacks = function () {
 					color: feedback.options.fg_true,
 					bgcolor: feedback.options.bg_true
 				};
-			}else{
-				return {
-					color: feedback.options.fg_false,
-					bgcolor: feedback.options.bg_false
-				};
+			} else {
+				if (this.webcastStatus.play_state == 1) {
+					return {
+						color: feedback.options.fg_paused,
+						bgcolor: feedback.options.bg_paused
+					};
+				} else {
+					return {
+						color: feedback.options.fg_false,
+						bgcolor: feedback.options.bg_false
+					};
+				}
 			}
 		}
 	}
@@ -61,7 +80,7 @@ exports.getFeedbacks = function () {
 			id: 'bg_test',
 			default: this.rgb(0, 38, 103),
 		}
-		,{
+			, {
 			type: 'colorpicker',
 			label: 'Foreground color for Live Mode',
 			id: 'fg_live',
@@ -80,7 +99,7 @@ exports.getFeedbacks = function () {
 					color: feedback.options.fg_test,
 					bgcolor: feedback.options.bg_test
 				};
-			}else{
+			} else {
 				return {
 					color: feedback.options.fg_live,
 					bgcolor: feedback.options.bg_live

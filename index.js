@@ -73,7 +73,7 @@ class instance extends instance_skel {
                 }
                 break
             case 'stop_webcast':
-                if (this.encodingState) {
+                if (this.encodingState || this.webcastStatus.play_state == 1) {
                     cmd = {
                         method: 'stopWebcast'
                     };
@@ -332,7 +332,7 @@ class instance extends instance_skel {
             .then(function (response) {
                 self.webcastStatus = response.data;
 
-                if (self.webcastStatus.encoding_status != '') {
+                if (self.webcastStatus.play_state == 2 || self.webcastStatus.play_state == 0) {
                     self.encodingState = true;
                 } else {
                     self.encodingState = false;
