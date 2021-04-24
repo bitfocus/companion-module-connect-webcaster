@@ -62,6 +62,7 @@ class instance extends instance_skel {
         let id = action.action;
         let cmd;
         let opt = action.options;
+        var self = this;
 
         switch (id) {
             case 'start_webcast':
@@ -79,10 +80,40 @@ class instance extends instance_skel {
                 }
                 break
             case 'pause_webcast':
-                if (!this.encodingState) {
-                    cmd = {
-                        method: 'pauseWebcast'
-                    };
+                if (this.encodingState) {
+                    //Get the list of pause messages
+                    axios.post('/json_api', {
+                        method: 'getPauseMessages'
+                    })
+                        .then(function (response) {
+                            var index = 0;
+                            if (typeof response.data.Items[opt.index] !== 'undefined') {
+                                index = opt.index;
+                            }
+                            cmd = {
+                                method: 'pauseWebcast',
+                                "params": [{
+                                    "pause_message_id": response.data.Items[index].id
+                                }]
+                            };
+
+                            axios.post('/json_api', cmd)
+                                .then(function (response) {
+                                    //console.log(response.data);
+                                    status(self.STATE_OK);
+                                })
+                                .catch(function (error) {
+                                    //console.log(error);
+                                    status(self.STATUS_ERROR, error);
+                                });
+
+                            self.status(self.STATE_OK);
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            self.status(self.STATUS_ERROR, error);
+                        });
                 }
                 break
             case 'toggle_mode':
@@ -240,23 +271,23 @@ class instance extends instance_skel {
                         status(self.STATUS_ERROR, error);
                     });
                 break;
-                case 'toggle_jit_slide':
-                    if (this.webcastStatus.is_jitslide_on) {
-                        cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=false";
-                    } else {
-                        cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=true";
-                    }
-                    axios.get(cmd)
-                        .then(function (response) {
-                            status(self.STATE_OK);
-                        })
-                        .catch(function (error) {
-                            status(self.STATUS_ERROR, error);
-                        });
-                    break;
+            case 'toggle_jit_slide':
+                if (this.webcastStatus.is_jitslide_on) {
+                    cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=false";
+                } else {
+                    cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=true";
+                }
+                axios.get(cmd)
+                    .then(function (response) {
+                        status(self.STATE_OK);
+                    })
+                    .catch(function (error) {
+                        status(self.STATUS_ERROR, error);
+                    });
+                break;
         }
 
-        if (cmd !== undefined && id != "set_jit_slide"  && id != "toggle_jit_slide") {
+        if (cmd !== undefined && id != "set_jit_slide" && id != "toggle_jit_slide") {
             axios.post('/json_api', cmd)
                 .then(function (response) {
                     //console.log(response.data);

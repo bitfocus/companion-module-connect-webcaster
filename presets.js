@@ -54,8 +54,10 @@ exports.getPresets = function () {
 			},
 			actions: [{
 				action: 'pause_webcast',
+				options: {
+					index: '0'
+				}
 			}],
-
 		},
 		{
 			category: 'webcast-control',

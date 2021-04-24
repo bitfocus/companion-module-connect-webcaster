@@ -12,6 +12,16 @@ module.exports = {
 		}
 		actions['pause_webcast'] = {
 			label: 'Pause Webcast',
+			options: [
+				{
+					type: 'number',
+					label: 'Pause Message Index',
+					id: 'index',
+					default: '0',
+					min: '0',
+					max: '99999'
+				}
+			]
 
 		}
 		actions['next_agenda'] = {
