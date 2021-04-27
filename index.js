@@ -110,7 +110,7 @@ class instance extends instance_skel {
                                 }]
                             };
 
-                            this.con.post('/json_api', cmd)
+                            self.con.post('/json_api', cmd)
                                 .then(function (response) {
                                     //console.log(response.data);
                                     status(self.STATE_OK);
