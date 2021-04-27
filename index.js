@@ -14,6 +14,8 @@ class instance extends instance_skel {
     constructor(system, id, config) {
         super(system, id, config)
 
+        this.con;
+
         this.encodingState;
         this.webcastStatus;
 
@@ -93,7 +95,7 @@ class instance extends instance_skel {
             case 'pause_webcast':
                 if (this.encodingState) {
                     //Get the list of pause messages
-                    axios.post('/json_api', {
+                    this.con.post('/json_api', {
                         method: 'getPauseMessages'
                     })
                         .then(function (response) {
@@ -108,7 +110,7 @@ class instance extends instance_skel {
                                 }]
                             };
 
-                            axios.post('/json_api', cmd)
+                            this.con.post('/json_api', cmd)
                                 .then(function (response) {
                                     //console.log(response.data);
                                     status(self.STATE_OK);
@@ -274,7 +276,7 @@ class instance extends instance_skel {
                 } else {
                     cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=false";
                 }
-                axios.get(cmd)
+                this.con.get(cmd)
                     .then(function (response) {
                         status(self.STATE_OK);
                     })
@@ -288,7 +290,7 @@ class instance extends instance_skel {
                 } else {
                     cmd = "/json_api?method=getJITslide&jitslide_id=-1&&jit_slide_on=true";
                 }
-                axios.get(cmd)
+                this.con.get(cmd)
                     .then(function (response) {
                         status(self.STATE_OK);
                     })
@@ -299,7 +301,7 @@ class instance extends instance_skel {
         }
 
         if (cmd !== undefined && id != "set_jit_slide" && id != "toggle_jit_slide") {
-            axios.post('/json_api', cmd)
+            this.con.post('/json_api', cmd)
                 .then(function (response) {
                     //console.log(response.data);
                     status(self.STATE_OK);
@@ -325,8 +327,9 @@ class instance extends instance_skel {
         this.init_variables()
         this.init_presets();
 
-
-        axios.defaults.baseURL = 'http://' + this.config.host + ':' + this.config.port;
+        this.con = axios.create({
+            baseURL:  'http://' + this.config.host + ':' + this.config.port
+          });
 
         self.statusInterval = setInterval(function () {
             self.getStatus();
@@ -337,7 +340,7 @@ class instance extends instance_skel {
 
     getStatus() {
         var self = this;
-        axios.post('/json_api', {
+        self.con.post('/json_api', {
             method: 'getStatus'
         })
             .then(function (response) {
@@ -401,7 +404,9 @@ class instance extends instance_skel {
 
         this.config = config
 
-        axios.defaults.baseURL = 'http://' + this.config.host + ':' + this.config.port;
+        this.con = axios.create({
+            baseURL:  'http://' + this.config.host + ':' + this.config.port
+          });
 
         this.actions()
 
