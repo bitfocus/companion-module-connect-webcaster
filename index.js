@@ -14,9 +14,11 @@ class instance extends instance_skel {
     constructor(system, id, config) {
         super(system, id, config)
 
-        this.statusInterval;
         this.encodingState;
         this.webcastStatus;
+
+        this.statusIntervalMS = 250;
+        this.statusInterval;
 
         Object.assign(this, {
             ...actions,
@@ -319,7 +321,7 @@ class instance extends instance_skel {
 
         self.statusInterval = setInterval(function () {
             self.getStatus();
-        }, 500);
+        }, self.statusIntervalMS);
 
     }
 
