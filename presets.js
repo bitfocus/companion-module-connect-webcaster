@@ -23,6 +23,14 @@ exports.getPresets = function () {
 			}],
 			feedbacks: [{
 				type: 'encoding_status',
+				options: {
+					fg_false: this.colours.white,
+					bg_false: this.colours.red,
+					fg_true: this.colours.white,
+					bg_true: this.colours.green,
+					fg_paused: this.colours.white,
+					bg_paused: this.colours.orange,
+				},
 			}],
 		},
 		{
@@ -75,6 +83,12 @@ exports.getPresets = function () {
 			}],
 			feedbacks: [{
 				type: 'webcast_mode',
+				options: {
+					fg_test: this.colours.white,
+					bg_test: this.colours.blue,
+					fg_live: this.colours.white,
+					bg_live: this.colours.green,
+				},
 			}],
 
 		},
@@ -92,6 +106,15 @@ exports.getPresets = function () {
 			actions: [{
 				action: 'set_live_mode',
 			}],
+			feedbacks: [{
+				type: 'webcast_mode',
+				options: {
+					fg_test: this.colours.white,
+					bg_test: this.colours.black,
+					fg_live: this.colours.white,
+					bg_live: this.colours.orange,
+				},
+			}],
 
 		},
 		{
@@ -107,6 +130,15 @@ exports.getPresets = function () {
 			},
 			actions: [{
 				action: 'set_test_mode',
+			}],
+			feedbacks: [{
+				type: 'webcast_mode',
+				options: {
+					fg_test: this.colours.white,
+					bg_test: this.colours.orange,
+					fg_live: this.colours.white,
+					bg_live: this.colours.black,
+				},
 			}],
 
 		},
@@ -159,6 +191,14 @@ exports.getPresets = function () {
 			},
 			feedbacks: [{
 				type: 'encoding_status',
+				options: {
+					fg_false: this.colours.white,
+					bg_false: this.colours.red,
+					fg_true: this.colours.white,
+					bg_true: this.colours.green,
+					fg_paused: this.colours.white,
+					bg_paused: this.colours.orange,
+				},
 			}],
 		},
 		{
@@ -216,7 +256,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'hybrid_index',
 				options: {
-					hybrid_id: '0'
+					hybrid_id: '0',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -243,7 +285,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'hybrid_index',
 				options: {
-					hybrid_id: '1'
+					hybrid_id: '1',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -270,7 +314,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'hybrid_index',
 				options: {
-					hybrid_id: '2'
+					hybrid_id: '2',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -297,7 +343,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'hybrid_index',
 				options: {
-					hybrid_id: '3'
+					hybrid_id: '3',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -321,7 +369,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'automation_status',
 				options: {
-					state: '1'
+					state: '1',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -345,7 +395,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'automation_status',
 				options: {
-					state: '0'
+					state: '0',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -366,7 +418,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'automation_status',
 				options: {
-					state: '1'
+					state: '1',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -390,7 +444,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'jit_slides',
 				options: {
-					state: '1'
+					state: '1',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -414,7 +470,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'jit_slides',
 				options: {
-					state: '0'
+					state: '0',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -435,103 +493,9 @@ exports.getPresets = function () {
 			feedbacks: [{
 				type: 'jit_slides',
 				options: {
-					state: '1'
-				}
-			}],
-		},
-		{
-			category: 'select-seat',
-			label: 'Seat 1',
-			bank: {
-				style: 'text',
-				text: ' Seat 1',
-				size: '18',
-				color: this.rgb(255, 255, 255),
-				bgcolor: this.rgb(0, 0, 0),
-
-			},
-			actions: [{
-				action: 'set_selected_seat',
-				options: {
-					seat: '1'
-				}
-			}],
-			feedbacks: [{
-				type: 'selected_seat',
-				options: {
-					seat: '1'
-				}
-			}],
-		},
-		{
-			category: 'select-seat',
-			label: 'Seat 2',
-			bank: {
-				style: 'text',
-				text: ' Seat 2',
-				size: '18',
-				color: this.rgb(255, 255, 255),
-				bgcolor: this.rgb(0, 0, 0),
-
-			},
-			actions: [{
-				action: 'set_selected_seat',
-				options: {
-					seat: '2'
-				}
-			}],
-			feedbacks: [{
-				type: 'selected_seat',
-				options: {
-					seat: '2'
-				}
-			}],
-		},
-		{
-			category: 'select-seat',
-			label: 'Seat 3',
-			bank: {
-				style: 'text',
-				text: ' Seat 3',
-				size: '18',
-				color: this.rgb(255, 255, 255),
-				bgcolor: this.rgb(0, 0, 0),
-
-			},
-			actions: [{
-				action: 'set_selected_seat',
-				options: {
-					seat: '3'
-				}
-			}],
-			feedbacks: [{
-				type: 'selected_seat',
-				options: {
-					seat: '3'
-				}
-			}],
-		},
-		{
-			category: 'select-seat',
-			label: 'Seat 4',
-			bank: {
-				style: 'text',
-				text: ' Seat 4',
-				size: '18',
-				color: this.rgb(255, 255, 255),
-				bgcolor: this.rgb(0, 0, 0),
-
-			},
-			actions: [{
-				action: 'set_selected_seat',
-				options: {
-					seat: '4'
-				}
-			}],
-			feedbacks: [{
-				type: 'selected_seat',
-				options: {
-					seat: '4'
+					state: '1',
+					fg: this.colours.white,
+					bg: this.colours.orange,
 				}
 			}],
 		},
@@ -551,6 +515,36 @@ exports.getPresets = function () {
 		},
 
 	]
+
+	for (let i = 1; i <= 100; i++) {
+		//Generate presets for seats
+		presets.push({
+			category: 'select-seat',
+			label: 'Seat ' + i,
+			bank: {
+				style: 'text',
+				text: ' Seat ' + i,
+				size: '18',
+				color: this.rgb(255, 255, 255),
+				bgcolor: this.rgb(0, 0, 0),
+
+			},
+			actions: [{
+				action: 'set_selected_seat',
+				options: {
+					seat: i
+				}
+			}],
+			feedbacks: [{
+				type: 'selected_seat',
+				options: {
+					seat: i,
+					fg: this.colours.white,
+					bg: this.colours.orange,
+				}
+			}],
+		})
+	}
 
 	return presets;
 }

@@ -20,6 +20,15 @@ class instance extends instance_skel {
         this.statusIntervalMS = 250;
         this.statusInterval;
 
+        this.colours = {
+            red:    this.rgb(115, 0, 0),
+            green:  this.rgb(0, 75, 0),
+            orange: this.rgb(255, 125, 0),
+            white:  this.rgb(255, 255, 255),
+            blue:   this.rgb(0, 38, 103),
+            black: this.rgb(0, 0, 0)
+        };
+
         Object.assign(this, {
             ...actions,
             ...feedbacks,

@@ -10,37 +10,37 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color for not Encoding',
 			id: 'fg_false',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color for not Encoding',
 			id: 'bg_false',
-			default: this.rgb(115, 0, 0),
+			default: this.colours.red,
 		}
 			, {
 			type: 'colorpicker',
 			label: 'Foreground color for Encoding',
 			id: 'fg_true',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color for Encoding',
 			id: 'bg_true',
-			default: this.rgb(0, 75, 0),
+			default: this.colours.green,
 		}
 			, {
 			type: 'colorpicker',
 			label: 'Foreground color for Paused',
 			id: 'fg_paused',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color for Paused',
 			id: 'bg_paused',
-			default: this.rgb(255, 125, 0),
+			default: this.colours.orange,
 		}
 		],
 		callback: (feedback, bank) => {
@@ -72,25 +72,25 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color for Test Mode',
 			id: 'fg_test',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color for Test Mode',
 			id: 'bg_test',
-			default: this.rgb(0, 38, 103),
+			default: this.colours.blue,
 		}
 			, {
 			type: 'colorpicker',
 			label: 'Foreground color for Live Mode',
 			id: 'fg_live',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color for Live Mode',
 			id: 'bg_live',
-			default: this.rgb(0, 75, 0),
+			default: this.colours.green,
 		}
 		],
 		callback: (feedback, bank) => {
@@ -115,13 +115,13 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color when active',
 			id: 'fg',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(255, 125, 0),
+			default: this.colours.orange,
 		},
 		{
 			type: 'dropdown',
@@ -154,13 +154,13 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color when active',
 			id: 'fg',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(255, 125, 0),
+			default: this.colours.orange,
 		},
 		{
 			type: 'dropdown',
@@ -191,13 +191,13 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color when active',
 			id: 'fg',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(255, 125, 0),
+			default: this.colours.orange,
 		},
 		{
 			type: 'number',
@@ -226,13 +226,13 @@ exports.getFeedbacks = function () {
 			type: 'colorpicker',
 			label: 'Foreground color when active',
 			id: 'fg',
-			default: '16777215'
+			default: this.colours.white
 		},
 		{
 			type: 'colorpicker',
 			label: 'Background color when active',
 			id: 'bg',
-			default: this.rgb(255, 125, 0),
+			default: this.colours.orange,
 		},
 		{
 			type: 'dropdown',
