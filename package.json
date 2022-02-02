@@ -17,5 +17,13 @@
 		"axios": "^0.21.1"
 	},
 	"author": "Rose O",
-	"license": "MIT"
+	"license": "MIT",
+	"homepage": "https://github.com/bitfocus/companion-module-connect-webcaster#readme",
+	"bugs": {
+		"url": "https://github.com/bitfocus/companion-module-connect-webcaster/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-module-connect-webcaster.git"
+	}
 }
